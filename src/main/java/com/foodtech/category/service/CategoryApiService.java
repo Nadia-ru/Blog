@@ -2,26 +2,21 @@ package com.foodtech.category.service;
 
 import com.foodtech.base.api.request.SearchRequest;
 import com.foodtech.base.api.response.SearchResponse;
-import com.foodtech.category.api.request.CategoryRequest;
-import com.foodtech.category.api.response.CategoryResponse;
+
 import com.foodtech.category.model.CategoryDoc;
 import com.foodtech.category.repository.CategoryRepository;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-import com.mongodb.client.gridfs.model.GridFSFile;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.gridfs.GridFsOperations;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +26,7 @@ public class CategoryApiService {
     private final CategoryRepository categoryRepository;
     private final MongoTemplate mongoTemplate;
     private final GridFsTemplate gridFsTemplate;
-    private final GridFsOperations operations;
+
 
     public CategoryDoc create(MultipartFile file, String title, String description) throws IOException {
         DBObject metaData = new BasicDBObject();
